@@ -127,9 +127,7 @@ void reconstruct_path(Point start, Point goal) {
     while(!point_eq(pos, start)) {
         assert(pos.x > -1 && pos.y > -1);
         Node *n = &grid[pos.x][pos.y];
-        if(!n->walkable) {
-            printf("Warning, overriding obstacle at (%d, %d).\n", pos.x, pos.y);
-        }
+        assert(n->walkable);
         n->graphics = '.';
         //printf("(%d, %d) linking back to (%d, %d)\n", pos.x, pos.y, n->came_from.x, n->came_from.y);
         pos = n->came_from;
